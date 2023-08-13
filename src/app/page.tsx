@@ -10,16 +10,23 @@ export default function Home() {
       <NavigationBar />
       <header className={styles.headerContainer}>
         <Container fluid>
-          <Row>
-            <Col md={6} className={`rounded-end ${styles.headerContent}`}>
-              <h1>
-                Professional Kitchen Exhaust Cleaning and Certification Services
-              </h1>
+          <Row className="justify-content-center align-items-center">
+            <Col md={6} className={`rounded-end  ${styles.headerContent}`}>
+              <h1>Clean. Safe. Certified.</h1>
               <p>
                 Ensure your kitchen is safe, compliant, and running at its best
                 with our top-quality cleaning and certification solutions.
               </p>
               <Button variant="primary">Get a Free Quote</Button>
+            </Col>
+            <Col className="p-4 align-items-center">
+              <NextImage
+                alt="Clean Kitchen"
+                src="/commercialKitchen.jpg"
+                width="750"
+                height="550"
+                className="rounded"
+              />
             </Col>
           </Row>
         </Container>
