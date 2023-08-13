@@ -1,8 +1,22 @@
-.headerContainer{
-    background-color: #c8e6c9;
-    color: black;
+.headerContainer {
+  color: black;
 }
 
-.headerContent{
+.headerContent {
+  justify-content: center;
+}
 
+.gradientText {
+  color: black;
+}
+
+.primaryButton{
+    background-color: #21ad25;
+    border-color: #21ad25;
+    color: white;
+}
+
+.primaryButton:hover{
+    background-color: #198019;
+    border-color: #147517;
 }

@@ -8,27 +8,10 @@ import Link from 'next/link';
 import styles from './styles/navigation.module.css';
 
 const NavigationBar = () => {
-  const [showNav, setShowNav] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentPosition = window.scrollY;
-      setShowNav(currentPosition < scrollPosition);
-      setScrollPosition(currentPosition);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrollPosition]);
-
   return (
     <>
       <Navbar
-        className={`"bg-body-tertiary ${showNav ? '' : 'd-none'} fixed-top" ${
+        className={`"bg-body-tertiary" ${
           styles.navbar
         }`}
       >
