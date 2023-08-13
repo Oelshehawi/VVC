@@ -2,12 +2,10 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import NextImage from 'next/image';
 import styles from './page.module.css';
-import NavigationBar from './components/NavigationBar';
 
 export default function Home() {
   return (
     <>
-      <NavigationBar />
       <header className={styles.headerContainer}>
         <Container fluid>
           <Row className="align-items-center">
