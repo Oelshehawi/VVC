@@ -28,7 +28,7 @@ const NavigationBar = () => {
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className={`${styles.navbar}`}>
-        <Container>
+        <Container fluid>
           <Navbar.Brand href="#home">
             <Image
               alt=""
@@ -40,7 +40,7 @@ const NavigationBar = () => {
             Vancouver Vent Cleaning
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-start">
             <Nav>
               <Nav.Link as={Link} href="/">
                 Home
