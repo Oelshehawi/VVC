@@ -10,7 +10,12 @@ import styles from './styles/navigation.module.css';
 
 const NavigationBar = () => {
   return (
-    <Navbar sticky="top" expand="sm" className={`${styles.navbar}`} data-bs-theme="dark">
+    <Navbar
+      sticky="top"
+      expand="sm"
+      className={`${styles.navbar}`}
+      data-bs-theme="dark"
+    >
       <Container fluid>
         <Navbar.Brand href="/" className={`text-white`}>
           <Image
@@ -24,14 +29,11 @@ const NavigationBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="text-white">
+          <Nav variant='underline' defaultActiveKey={'/'}>
             <Nav.Link as={Link} href="/">
               Home
             </Nav.Link>
-            <NavDropdown
-              title="Services"
-              id="collasible-nav-dropdown"
-            >
+            <NavDropdown title="Services" id="collasible-nav-dropdown">
               <NavDropdown.Item as={Link} href="/services/exhaust-cleaning">
                 Exhaust System Cleaning
               </NavDropdown.Item>
