@@ -2,21 +2,46 @@
   color: black;
 }
 
-.headerContent {
-  justify-content: center;
-}
-
 .gradientText {
   color: black;
 }
 
-.primaryButton{
-    background-color: #21ad25;
-    border-color: #21ad25;
-    color: white;
+.primaryButton {
+  background-color: #54aa57;
+  border-color: #21ad25;
+  color: white;
 }
 
-.primaryButton:hover{
-    background-color: #198019;
-    border-color: #147517;
+.primaryButton:hover {
+  background-color: #198019;
+  border-color: #147517;
+}
+
+.featureSection {
+  background-color: #306e32;
+  color: white;
+}
+
+.secondaryButton {
+  border-color: black;
+  color: white;
+  border-radius: 0;
+}
+
+.secondaryButton:hover {
+  background-color: #c8e6c9;
+  color: black;
+  border-color: #c8e6c9;
+}
+
+.ternaryButton {
+  border: none;
+  color: white;
+}
+
+.ternaryButton:hover {
+  background-color: #306e32;
+  color: white;
+  transition: ease-in-out 0.5s;
+  transform: scale(1.1);
 }
