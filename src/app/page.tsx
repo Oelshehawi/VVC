@@ -14,11 +14,12 @@ export default function Home() {
             className={`rounded-end mt-4 mt-md-0 ${styles.headerContent}`}
           >
             <h1 className={`${styles.gradientText}`}>
-              Clean. Safe. Certified.
+              Certified Clean, Expert Service.
             </h1>
             <p>
-              Ensure your kitchen is safe, compliant, and running at its best
-              with our top-quality cleaning and certification solutions.
+              Experience the pinnacle of safety and compliance with our premium
+              cleaning and certification solutions for a kitchen that operates
+              at its absolute best.
             </p>
             <Button
               className={`rounded-5 text-center ${styles.primaryButton}`}
@@ -31,7 +32,7 @@ export default function Home() {
           <Col md={6} className="mt-4">
             <NextImage
               alt="Clean Kitchen"
-              src="/commercialKitchen.jpg"
+              src="/commercial-kitchen-cleaning-img.jpg"
               layout="responsive"
               width="300"
               height="200"
@@ -62,13 +63,13 @@ export default function Home() {
               </Button>
               <Button
                 variant="outline-light"
-                className={`m-2 ${styles.ternaryButton}`}
+                className={`mx-2 ${styles.ternaryButton}`}
               >
                 Contact Us <FaAngleRight></FaAngleRight>
               </Button>
             </Col>
           </Row>
-          <Col>
+          <Col className="pb-4">
             <NextImage
               alt="Clean Kitchen"
               src="/commercialKitchen.jpg"

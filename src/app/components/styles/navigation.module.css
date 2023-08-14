@@ -7,3 +7,7 @@
   background-color: #306e32;
   color: white;
 }
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
