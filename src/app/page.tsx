@@ -2,13 +2,16 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import NextImage from 'next/image';
+import Nav from 'react-bootstrap/Nav';
 import styles from './page.module.css';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaCertificate } from 'react-icons/fa';
 import { FaTools } from 'react-icons/fa';
 import Link from 'next/link';
 
+
 export default function Home() {
+
   return (
     <>
       <Container>
@@ -91,7 +94,7 @@ export default function Home() {
       <Container className="my-4">
         <Row>
           <Col md={6}>
-            <Card className="text-center p-5" bg="success" text="white">
+            <Card className={`text-center p-5 ${styles.card}`} text="white">
               <Container className="d-flex justify-content-center mb-5">
                 <FaTools
                   className={`${styles.serviceIcon} ${styles.serviceCleaningIcon}`}
@@ -120,8 +123,8 @@ export default function Home() {
               </Button>
             </Card>
           </Col>
-          <Col md={6}>
-            <Card className="text-center p-5" bg="success" text="white">
+          <Col md={6} className="mt-4 mt-md-0">
+            <Card className={`text-center p-5 ${styles.card}`} text="white">
               <Container className="d-flex justify-content-center mb-5">
                 <FaCertificate
                   className={` ${styles.serviceIcon} ${styles.serviceCertificationIcon}`}
@@ -216,11 +219,31 @@ export default function Home() {
             </Col>
           </Row>
           <Row>
-            <Col md={12} className='d-flex justify-content-end py-4'>
+            <Col md={12} className="d-flex justify-content-end py-4">
               <h3>... and Hundreds More!</h3>
             </Col>
           </Row>
         </Container>
+      </Container>
+      <Container>
+        <Row>
+          <Col
+            md={12}
+            className=" d-flex justify-content-center align-items-center flex-column p-4"
+          >
+            <h1> Get a Free Quote Today</h1>
+            <p className="my-3 text-secondary fw-bolder">
+              Zero-Risk Choice: Free Estimate, Competitive Pricing, Decide with
+              Confidence
+            </p>
+            <Button
+              size="lg"
+              className={`my-4 text-uppercase ${styles.primaryButton}`}
+            >
+              Free Quote
+            </Button>
+          </Col>
+        </Row>
       </Container>
     </>
   );

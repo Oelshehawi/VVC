@@ -7,8 +7,10 @@ import { Container } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './styles/navigation.module.css';
+import { usePathname } from 'next/navigation';
 
 const NavigationBar = () => {
+  const pathname = usePathname();
   return (
     <Navbar
       sticky="top"
@@ -19,7 +21,7 @@ const NavigationBar = () => {
       <Container fluid>
         <Navbar.Brand href="/" className={`text-white`}>
           <Image
-            alt=""
+            alt="VHD Logo"
             src="/9925.png"
             width="30"
             height="30"
@@ -29,7 +31,11 @@ const NavigationBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav variant='underline' defaultActiveKey={'/'}>
+          <Nav
+            variant="underline"
+            defaultActiveKey={'/'}
+            activeKey={pathname}
+          >
             <Nav.Link as={Link} href="/">
               Home
             </Nav.Link>

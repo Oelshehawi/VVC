@@ -1,6 +1,7 @@
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
 
 export const metadata = {
   title: 'Vancouver Vent Cleaning',
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <NavigationBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
