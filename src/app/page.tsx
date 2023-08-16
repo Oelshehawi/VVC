@@ -156,7 +156,7 @@ export default function Home() {
         <Container className="my-5">
           <Row className="my-4 py-4">
             <Col md={12}>
-              <h1> Our Clients </h1>
+              <h1> A Few Of Our Clients : </h1>
             </Col>
           </Row>
           <Row>
