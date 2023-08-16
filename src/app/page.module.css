@@ -17,7 +17,7 @@
   border-color: #147517;
 }
 
-.featureSection {
+.secondarySection {
   background-color: #306e32;
   color: white;
 }
@@ -49,11 +49,6 @@
 .ternaryButton:hover .arrowIcon {
   transition: ease-in-out 0.2s;
   transform: scale(1.3);
-}
-
-
-.serviceIcon{
-
 }
 
 .serviceCertificationIcon{

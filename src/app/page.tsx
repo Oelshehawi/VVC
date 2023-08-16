@@ -45,9 +45,9 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-      <Container fluid className={styles.featureSection}>
-        <Container className={`my-5 ${styles.featureSection}`}>
-          <Row className="aling-items-center my-4 py-4">
+      <Container fluid className={styles.secondarySection}>
+        <Container className={`my-5`}>
+          <Row className="my-4 py-4">
             <Col md={6} className="d-flex align-items-center">
               <h1> Ensuring Clean and Safe Commercial Kitchens</h1>
             </Col>
@@ -71,7 +71,7 @@ export default function Home() {
                 className={`mx-2 ${styles.ternaryButton}`}
                 href="/contact"
               >
-                Contact Us{' '}
+                Contact Us
                 <FaAngleRight className={`${styles.arrowIcon}`}></FaAngleRight>
               </Button>
             </Col>
@@ -151,6 +151,76 @@ export default function Home() {
             </Card>
           </Col>
         </Row>
+      </Container>
+      <Container fluid className={styles.secondarySection}>
+        <Container className="my-5">
+          <Row className="my-4 py-4">
+            <Col md={12}>
+              <h1> Our Clients </h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="d-flex align-items-center" md={2}>
+              <NextImage
+                alt="Dairy Queen"
+                src="/dairyQueen.png"
+                layout="responsive"
+                width="150"
+                height="150"
+              />
+            </Col>
+            <Col md={2}>
+              <NextImage
+                alt="Clean Kitchen"
+                src="/bostonPizza.png"
+                layout="responsive"
+                width="50"
+                height="50"
+              />
+            </Col>
+            <Col className="d-flex align-items-center" md={2}>
+              <NextImage
+                alt="Clean Kitchen"
+                src="/oebBreakfast.png"
+                layout="responsive"
+                width="50"
+                height="50"
+              />
+            </Col>
+            <Col className="d-flex align-items-center" md={2}>
+              <NextImage
+                alt="Clean Kitchen"
+                src="/panago.png"
+                layout="responsive"
+                width="50"
+                height="50"
+              />
+            </Col>
+            <Col className="d-flex align-items-center" md={2}>
+              <NextImage
+                alt="Clean Kitchen"
+                src="/chitChat.png"
+                layout="responsive"
+                width="50"
+                height="50"
+              />
+            </Col>
+            <Col className="d-flex align-items-center" md={2}>
+              <NextImage
+                alt="Clean Kitchen"
+                src="/attira.png"
+                layout="responsive"
+                width="50"
+                height="50"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} className='d-flex justify-content-end py-4'>
+              <h3>... and Hundreds More!</h3>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     </>
   );
