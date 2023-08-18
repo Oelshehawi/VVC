@@ -1,9 +1,41 @@
-.logo {
-  border-radius: 15px;
-  margin-right: 10px;
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  box-shadow: var(--shadow);
+  z-index: -1;
+  transform: translateY(calc(-100% - 10px));
+  transition: transform 0.5s ease;
 }
 
 .navbar {
-  background-color: #306e32;
-  color: white;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  padding: 10px 0;
+  background-color: var(--body-bg-color) !important;
+}
+
+.navbar.bg-reveal::before {
+  transform: translateY(0) !important;
+}
+
+.navText {
+  color: var(--text-dark-grey) !important;
+  font-size: large !important;
+}
+
+.brandText {
+  color: var(--text-dark-grey) !important;
+  font-weight: bolder;
+}
+
+.navText:hover {
+  color: var(--main-color) !important;
 }

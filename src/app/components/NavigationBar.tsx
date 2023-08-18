@@ -1,58 +1,92 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import styles from './styles/navigation.module.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Container } from 'react-bootstrap';
 import Image from 'next/image';
-import Link from 'next/link';
-import styles from './styles/navigation.module.css';
-import { usePathname } from 'next/navigation';
 
 const NavigationBar = () => {
-  const pathname = usePathname();
+  useEffect(() => {
+    const handleScroll = () => {
+      const navBar = document.querySelector('.navbar');
+      if (window.scrollY > 0) {
+        navBar?.classList.add(styles['bg-reveal']);
+      } else {
+        navBar?.classList.remove(styles['bg-reveal']);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Navbar
-      sticky="top"
-      expand="sm"
-      className={`${styles.navbar}`}
-      data-bs-theme="dark"
+      fixed="top"
+      expand="lg"
+      className={`px-2 px-md-4 ${styles.navbar}`}
     >
-      <Container fluid>
-        <Navbar.Brand href="/" className={`text-white`}>
-          <Image
-            alt="VHD Logo"
-            src="/9925.png"
-            width="30"
-            height="30"
-            className={styles.logo}
-          />
-          Vancouver Vent Cleaning
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav
-            variant="underline"
-            defaultActiveKey={'/'}
-            activeKey={pathname}
-          >
-            <Nav.Link as={Link} href="/">
+      <Navbar.Brand href="/" className={` ${styles.brandText}`}>
+        <Image
+          alt="VHD Logo"
+          src="/9925.png"
+          width="30"
+          height="30"
+          className="rounded-3 me-2"
+        />
+        Vancouver Vent Cleaning
+      </Navbar.Brand>
+      <Navbar.Toggle
+        aria-controls="responsive-navbar-nav"
+        className={styles.brandText}
+      />
+      <Navbar.Collapse
+        id="responsive-navbar-nav"
+        className="justify-content-end"
+      >
+        <Nav className="d-flex justify-content-end" as="ul">
+          <Nav.Item as="li">
+            <Nav.Link href="#home" className={`me-4 ${styles.navText}`}>
               Home
             </Nav.Link>
-            <NavDropdown title="Services" id="collasible-nav-dropdown">
-              <NavDropdown.Item as={Link} href="/services/exhaust-cleaning">
-                Exhaust System Cleaning
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/services/certification">
-                Certification
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link as={Link} href="/contact">
+          </Nav.Item>
+          <Nav.Item as="li">
+            <Nav.Link href="#services" className={` me-4 ${styles.navText}`}>
+              Services
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item as="li">
+            <Nav.Link
+              href="#exhaust-cleaning"
+              className={`me-4 ${styles.navText}`}
+            >
+              Exhaust System Cleaning
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item as="li">
+            <Nav.Link
+              href="#certification"
+              className={`me-4 ${styles.navText}`}
+            >
+              Certification
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item as="li">
+            <Nav.Link href="#clients" className={`me-4 ${styles.navText}`}>
+              Our Clients
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item as="li">
+            <Nav.Link href="#contact" className={`me-4 ${styles.navText}`}>
               Contact Us
             </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };
