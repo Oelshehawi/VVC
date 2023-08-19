@@ -39,3 +39,7 @@
 .navText:hover {
   color: var(--main-color) !important;
 }
+
+.font{
+  font-size: 0.8rem;
+}

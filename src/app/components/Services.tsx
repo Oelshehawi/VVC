@@ -13,7 +13,7 @@ const Services = () => {
       <div className={`${styles.sectionTitle}`}>
         <h6 className={` mb-3 ${styles.line}`}>Services</h6>
       </div>
-      <h1 className="d-flex justify-content-center mb-4">What we Do</h1>
+      <h1 className="text-center mb-4">What we Do</h1>
       <Row>
         <Col md={6}>
           <Card className={`text-center p-5 ${styles.card}`} text="white">
@@ -23,10 +23,9 @@ const Services = () => {
                 size={100}
               ></FaTools>
             </Container>
-            <Card.Title>Exhaust System Cleaning</Card.Title>
+            <Card.Title>Exhaust Hood Cleaning</Card.Title>
             <Card.Text>
-              We specialize in providing comprehensive exhaust cleaning and
-              maintenance services for commercial kitchens.
+              We specialize in providing comprehensive exhaust system cleaning services for commercial kitchens.
             </Card.Text>
             <Button
               variant="outline-light"

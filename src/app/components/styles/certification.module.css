@@ -1,37 +1,48 @@
-.image{
-    object-fit: contain;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important;
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }
 
 .sectionTitle {
-    display: inline-block;
-    position: relative;
-    padding: 0 40px;
-    margin: 0 0 12px;
-  }
-  
-  .line {
-    color: var(--main-color);
-  }
-  
-  .line::before,
-  .line::after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 34px;
-    top: 30%;
-    background-color: var(--main-color);
-    transform: translateY(-50%);
-  }
-  
-  .line::before {
-    left: 0;
-  }
-  
-  .line::after {
-    right: 0;
-  }
-  
+  display: inline-block;
+  position: relative;
+  padding: 0 40px;
+  margin: 0 0 12px;
+}
+
+.line {
+  color: var(--main-color);
+}
+
+.line::before,
+.line::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 34px;
+  top: 30%;
+  background-color: var(--main-color);
+  transform: translateY(-50%);
+}
+
+.line::before {
+  left: 0;
+}
+
+.line::after {
+  right: 0;
+}
+
+.primaryButton {
+  background-color: var(--main-color);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  background-color: transparent;
+  color: var(--main-color);
+  border-color: var(--main-color);
+}

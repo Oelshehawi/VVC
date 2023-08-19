@@ -25,11 +25,7 @@ const NavigationBar = () => {
   }, []);
 
   return (
-    <Navbar
-      fixed="top"
-      expand="lg"
-      className={`px-2 px-md-4 ${styles.navbar}`}
-    >
+    <Navbar fixed="top" expand="lg" className={`px-2 px-md-4 ${styles.navbar}`}>
       <Navbar.Brand href="/" className={` ${styles.brandText}`}>
         <Image
           alt="VHD Logo"
@@ -38,7 +34,12 @@ const NavigationBar = () => {
           height="30"
           className="rounded-3 me-2"
         />
-        Vancouver Vent Cleaning
+        <span className="d-none d-md-inline-block">
+          Vancouver Vent Cleaning
+        </span>
+        <span className={`d-inline-block d-sm-none fw-bolder ${styles.font}`}>
+          Vancouver Vent Cleaning
+        </span>
       </Navbar.Brand>
       <Navbar.Toggle
         aria-controls="responsive-navbar-nav"

@@ -6,7 +6,7 @@ import NextImage from 'next/image';
 
 const Certification = () => {
   return (
-    <Container id="certification" className='text-center'>
+    <Container id="certification" className="text-center">
       <div className={` ${styles.sectionTitle}`}>
         <h6 className={` mb-3 ${styles.line}`}>Certification</h6>
       </div>
@@ -72,6 +72,16 @@ const Certification = () => {
             </Accordion.Item>
           </Accordion>
         </Col>
+        <Row className={`d-flex justify-content-center px-0`}>
+          <Button
+            size="lg"
+            type="submit"
+            className={`my-4 w-50 px-0 ${styles.primaryButton}`}
+            href="#contact"
+          >
+            Get Your Kitchen Certified
+          </Button>
+        </Row>
       </Row>
     </Container>
   );

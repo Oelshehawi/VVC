@@ -22,7 +22,7 @@ const Contact = () => {
 
   return (
     <Container id="contact" className="text-center">
-      <div className={` ${styles.sectionTitle}`}>
+      <div className={`mt-md-0 mt-5 ${styles.sectionTitle}`}>
         <h6 className={` mb-3 ${styles.line}`}>Contact Us</h6>
       </div>
       <Row>
@@ -51,7 +51,7 @@ const Contact = () => {
                 <FaEnvelope size={20} className={` ${styles.iconColor}`} />
               </div>
               <h3 className="mt-4 ms-5 ps-4 text-start">Email Us</h3>
-              <p className="ms-5 ps-4 text-start">
+              <p className="ms-5 ps-4 text-start text-break">
                 adam@vancouverventcleaning.ca
               </p>
             </Container>
