@@ -97,11 +97,11 @@
   }
 
   70% {
-    box-shadow: 0 0 0 20px rgba(173, 216, 230, 0);
+    box-shadow: 0 0 0 20px rgba(173, 216, 230, 20);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0);
+    box-shadow: 0 0 0 0 rgba(173, 216, 230, 10);
   }
 }
 
