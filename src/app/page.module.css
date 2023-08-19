@@ -93,14 +93,21 @@
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.7); 
+    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.7);
   }
 
   70% {
-    box-shadow: 0 0 0 20px rgba(173, 216, 230, 0); 
+    box-shadow: 0 0 0 20px rgba(173, 216, 230, 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0); 
+    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0);
   }
+}
+
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }

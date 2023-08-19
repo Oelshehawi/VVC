@@ -8,6 +8,13 @@
   color: white;
 }
 
+.image{
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}
+
 .sectionTitle {
   display: inline-block;
   position: relative;
@@ -36,11 +43,4 @@
 
 .line::after {
   right: 0;
-}
-
-.image{
-  object-fit: contain;
-  width: 100% !important;
-  position: relative !important;
-  height: unset !important;
 }

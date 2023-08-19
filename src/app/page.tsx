@@ -6,6 +6,7 @@ import Contact from './components/Contact';
 import OurClients from './components/OurClients';
 import ExhaustCleaning from './components/ExhaustCleaning';
 import Services from './components/Services';
+import Certification from './components/Certification';
 
 export default function Home() {
   return (
@@ -43,16 +44,15 @@ export default function Home() {
             <NextImage
               alt="Clean Kitchen"
               src="/pressureWasherCartoon2.png"
-              layout="responsive"
-              width="1000"
-              height="667"
-              className={` ${styles.cartoonImage}`}
+              fill={true}
+              className={` ${styles.cartoonImage} ${styles.image}`}
             />
           </Col>
         </Row>
       </Container>
       <Services />
       <ExhaustCleaning />
+      <Certification />
       <OurClients />
       <Contact />
     </>
