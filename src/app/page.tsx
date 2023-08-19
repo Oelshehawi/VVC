@@ -32,6 +32,7 @@ export default function Home() {
               className={`rounded-5 mt-4 ${styles.primaryButton}`}
               variant="primary"
               size="lg"
+              href='#contact'
             >
               Get a Free Quote
             </Button>
