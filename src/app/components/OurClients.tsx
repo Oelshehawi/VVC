@@ -7,7 +7,7 @@ import NextImage from 'next/image';
 const OurClients = () => {
   return (
     <Container id="clients" fluid className={styles.secondarySection}>
-      <Container className="my-5">
+      <Container className="mb-5">
         <Row className="my-4 py-4">
           <Col md={12}>
             <h1> A Few Of Our Clients : </h1>

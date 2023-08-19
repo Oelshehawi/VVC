@@ -7,14 +7,15 @@
 }
 
 .primaryButton {
-  background-color: #54aa57;
-  border-color: #21ad25;
-  color: white;
+  background-color: var(--main-color);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
 }
 
 .primaryButton:hover {
-  background-color: #198019;
-  border-color: #147517;
+  background-color: transparent;
+  color: var(--main-color);
+  border-color: var(--main-color);
 }
 
 .secondarySection {
@@ -22,43 +23,84 @@
   color: white;
 }
 
-.secondaryButton {
-  border-color: black;
-  color: white;
-  border-radius: 0;
+.cartoonImage {
+  position: relative;
 }
 
-.secondaryButton:hover {
-  background-color: #c8e6c9;
-  color: black;
-  border-color: #c8e6c9;
+.circle {
+  position: absolute;
+  z-index: -1;
+  background-color: var(--main-color);
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  transform: translate(-25%, -15%);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  animation: pulse 2s infinite;
 }
 
-.ternaryButton {
-  border: none;
-  color: white;
+.bubble {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 50%;
+  background: #c1f1ff;
 }
 
-.ternaryButton:hover {
-  background: none;
-  color: white;
-  transition: ease-in-out 0.2s;
-  transform: scale(1.1);
+.bigBubble {
+  height: 35px;
+  width: 35px;
+  border: 4px solid #c1f1ff;
+  box-shadow: (#e0f9ff 8px 0px 0px);
+  transform: translate(700%, -400%);
 }
 
-.ternaryButton:hover .arrowIcon {
-  transition: ease-in-out 0.2s;
-  transform: scale(1.3);
+.mediumBubble {
+  top: 120px;
+  left: 80px;
+  height: 25px;
+  width: 25px;
+  border: 4px solid #c1f1ff;
+  box-shadow: (#e0f9ff 5px 0px 0px);
+  transform: translate(700%, -650%);
 }
 
-.serviceCertificationIcon{
-    color: yellow;
+.smallBubble {
+  top: 100px;
+  left: -60px;
+  height: 15px;
+  width: 15px;
+  box-shadow: (#e0f9ff 3px 0px 0px);
+  transform: translate(2000%, -1000%);
 }
 
-.serviceCleaningIcon{
-    color: red;
+@media (max-width: 768px) {
+  .bubble,
+  .bigBubble,
+  .mediumBubble,
+  .smallBubble {
+    display: none;
+  }
+
+  .circle {
+    transform: translate(-20%, -70%);
+  }
 }
 
-.card{
-  background-color: #306e32;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.7); 
+  }
+
+  70% {
+    box-shadow: 0 0 0 20px rgba(173, 216, 230, 0); 
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0); 
+  }
 }

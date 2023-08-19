@@ -15,6 +15,7 @@
   /* bg colors */
   --body-bg-color: hsl(var(--hue), 60%, 94%);
   --bg-color: hsl(var(--hue), 60%, 96%);
+  --bg-color2: hsl(var(--hue), 30%, 96%);
   --bg-white: hsl(0, 0%, 100%);
 
   /*  border color */
