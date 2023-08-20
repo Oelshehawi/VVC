@@ -4,7 +4,13 @@ import { Container, Row, Col, Button, Accordion } from 'react-bootstrap';
 import styles from './styles/certification.module.css';
 import NextImage from 'next/image';
 
-const Certification = () => {
+interface scrollProps {
+  scrollToSection: (id: string) => void;
+}
+
+const Certification: React.FunctionComponent<scrollProps> = ({
+  scrollToSection,
+}) => {
   return (
     <Container id="certification" className="text-center">
       <div className={` ${styles.sectionTitle}`}>
@@ -20,8 +26,8 @@ const Certification = () => {
           />
         </Col>
         <Col md={6}>
-          <Accordion className='text-start'>
-            <Accordion.Item eventKey="0" >
+          <Accordion className="text-start">
+            <Accordion.Item eventKey="0">
               <Accordion.Header>
                 Why Should You Care About Certification?
               </Accordion.Header>
@@ -77,7 +83,7 @@ const Certification = () => {
             size="lg"
             type="submit"
             className={`my-4 w-50 px-0 ${styles.primaryButton}`}
-            href="#contact"
+            onClick={() => scrollToSection('contact')}
           >
             Get Your Kitchen Certified
           </Button>

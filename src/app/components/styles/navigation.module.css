@@ -40,6 +40,10 @@
   color: var(--main-color) !important;
 }
 
-.font{
+.navText:focus-within {
+  color: var(--main-color) !important;
+}
+
+.font {
   font-size: 0.8rem;
 }

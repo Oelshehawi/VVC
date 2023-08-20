@@ -7,7 +7,13 @@ import { FaCertificate } from 'react-icons/fa';
 import { FaTools } from 'react-icons/fa';
 import { FaAngleRight } from 'react-icons/fa';
 
-const Services = () => {
+interface ServiceProps {
+  scrollToSection: (id: string) => void;
+}
+
+const Services: React.FunctionComponent<ServiceProps> = ({
+  scrollToSection,
+}) => {
   return (
     <Container id="services" className={`py-md-5 text-center`}>
       <div className={`${styles.sectionTitle}`}>
@@ -25,19 +31,20 @@ const Services = () => {
             </Container>
             <Card.Title>Exhaust Hood Cleaning</Card.Title>
             <Card.Text>
-              We specialize in providing comprehensive exhaust system cleaning services for commercial kitchens.
+              We specialize in providing comprehensive exhaust system cleaning
+              services for commercial kitchens.
             </Card.Text>
             <Button
               variant="outline-light"
               className={`text-white fw-bolder ${styles.primaryButton}`}
-              href="#exhaust-cleaning"
+              onClick={() => scrollToSection('exhaust-cleaning')}
             >
               Learn More
             </Button>
             <Button
               variant="outline"
               className={`my-4 text-dark fw-bolder ${styles.ternaryButton}`}
-              href="#contact"
+              onClick={() => scrollToSection('contact')}
             >
               Contact Us{' '}
               <FaAngleRight className={`${styles.arrowIcon}`}></FaAngleRight>
@@ -60,14 +67,14 @@ const Services = () => {
             <Button
               variant="outline-light"
               className={`text-white fw-bolder ${styles.primaryButton}`}
-              href="#certification"
+              onClick={() => scrollToSection('certification')}
             >
               Learn More
             </Button>
             <Button
               variant="outline"
               className={`my-4 text-dark fw-bolder ${styles.ternaryButton}`}
-              href="#contact"
+              onClick={() => scrollToSection('contact')}
             >
               Contact Us{' '}
               <FaAngleRight className={`${styles.arrowIcon}`}></FaAngleRight>

@@ -9,6 +9,17 @@ import Services from './components/Services';
 import Certification from './components/Certification';
 
 export default function Home() {
+  const scrollToSection = (id: any) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
   return (
     <>
       <Container
@@ -32,7 +43,7 @@ export default function Home() {
               className={`rounded-5 mt-4 ${styles.primaryButton}`}
               variant="primary"
               size="lg"
-              href='#contact'
+              onClick={() => scrollToSection('contact')}
             >
               Get a Free Quote
             </Button>
@@ -51,9 +62,9 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-      <Services />
-      <ExhaustCleaning />
-      <Certification />
+      <Services scrollToSection={scrollToSection} />
+      <ExhaustCleaning scrollToSection={scrollToSection} />
+      <Certification scrollToSection={scrollToSection} />
       <OurClients />
       <Contact />
     </>

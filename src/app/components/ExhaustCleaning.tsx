@@ -6,7 +6,13 @@ import NextImage from 'next/image';
 import { FaAngleRight } from 'react-icons/fa';
 import { ReactCompareSlider } from 'react-compare-slider';
 
-const ExhaustCleaning = () => {
+interface scrollProps {
+  scrollToSection: (id: string) => void;
+}
+
+const ExhaustCleaning: React.FunctionComponent<scrollProps> = ({
+  scrollToSection,
+}) => {
   return (
     <>
       <Container
@@ -23,7 +29,9 @@ const ExhaustCleaning = () => {
         </svg>
         <Container className={`mt-5 text-center`}>
           <div className={` ${styles.sectionTitle}`}>
-            <h6 className={` mb-3 ${styles.line} text-white`}>Exhaust System Cleaning</h6>
+            <h6 className={` mb-3 ${styles.line} text-white`}>
+              Exhaust System Cleaning
+            </h6>
           </div>
           <Row className="my-4 py-4 text-start">
             <Col md={6} className="d-flex align-items-center">
@@ -40,7 +48,7 @@ const ExhaustCleaning = () => {
               <Button
                 variant="outline-light"
                 className={`${styles.primaryButton}`}
-                href="#contact"
+                onClick={() => scrollToSection('contact')}
               >
                 Free Quote
                 <FaAngleRight className={`${styles.arrowIcon}`}></FaAngleRight>

@@ -24,6 +24,17 @@ const NavigationBar = () => {
     };
   }, []);
 
+  const scrollToSection = (id: string): void => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  };
+
   return (
     <Navbar fixed="top" expand="lg" className={`px-2 px-md-4 ${styles.navbar}`}>
       <Navbar.Brand href="/" className={` ${styles.brandText}`}>
@@ -51,18 +62,24 @@ const NavigationBar = () => {
       >
         <Nav className="d-flex justify-content-end" as="ul">
           <Nav.Item as="li">
-            <Nav.Link href="#home" className={`me-4 ${styles.navText}`}>
+            <Nav.Link
+              onClick={() => scrollToSection('home')}
+              className={`me-4 ${styles.navText}`}
+            >
               Home
             </Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Nav.Link href="#services" className={` me-4 ${styles.navText}`}>
+            <Nav.Link
+              onClick={() => scrollToSection('services')}
+              className={` me-4 ${styles.navText}`}
+            >
               Services
             </Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
             <Nav.Link
-              href="#exhaust-cleaning"
+              onClick={() => scrollToSection('exhaust-cleaning')}
               className={`me-4 ${styles.navText}`}
             >
               Exhaust System Cleaning
@@ -70,19 +87,25 @@ const NavigationBar = () => {
           </Nav.Item>
           <Nav.Item as="li">
             <Nav.Link
-              href="#certification"
+              onClick={() => scrollToSection('certification')}
               className={`me-4 ${styles.navText}`}
             >
               Certification
             </Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Nav.Link href="#clients" className={`me-4 ${styles.navText}`}>
+            <Nav.Link
+              className={`me-4 ${styles.navText}`}
+              onClick={() => scrollToSection('clients')}
+            >
               Our Clients
             </Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Nav.Link href="#contact" className={`me-4 ${styles.navText}`}>
+            <Nav.Link
+              onClick={() => scrollToSection('contact')}
+              className={`me-4 ${styles.navText}`}
+            >
               Contact Us
             </Nav.Link>
           </Nav.Item>
