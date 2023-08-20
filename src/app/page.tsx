@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Container
         id="home"
-        className="mt-5 pt-5 pb-2 overflow-hidden position-relative"
+        className="mt-5 pt-5 pb-2 pb-lg-4 overflow-hidden position-relative"
       >
         <Row className="align-items-center">
           <Col

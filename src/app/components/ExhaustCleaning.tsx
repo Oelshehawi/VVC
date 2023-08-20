@@ -14,7 +14,7 @@ const ExhaustCleaning = () => {
         fluid
         className={`px-0 ${styles.secondarySection}`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 190">
           <path
             fill="var(--body-bg-color)"
             fillOpacity="1"
@@ -25,7 +25,6 @@ const ExhaustCleaning = () => {
           <div className={` ${styles.sectionTitle}`}>
             <h6 className={` mb-3 ${styles.line} text-white`}>Exhaust System Cleaning</h6>
           </div>
-
           <Row className="my-4 py-4 text-start">
             <Col md={6} className="d-flex align-items-center">
               <h1> Ensuring Clean and Safe Commercial Kitchens</h1>

@@ -20,8 +20,8 @@ const Certification = () => {
           />
         </Col>
         <Col md={6}>
-          <Accordion>
-            <Accordion.Item eventKey="0">
+          <Accordion className='text-start'>
+            <Accordion.Item eventKey="0" >
               <Accordion.Header>
                 Why Should You Care About Certification?
               </Accordion.Header>
@@ -40,12 +40,12 @@ const Certification = () => {
                 What Does Our Certification Guarantee?
               </Accordion.Header>
               <Accordion.Body>
-                Our certification assures that our RFPTs are extensively trained
+                {`Our certification assures that our RFPTs are extensively trained
                 for inspections, testing, and maintenance. These certifications
                 are vital for your commercial kitchen's compliance with the law.
                 By choosing certified professionals, you're ensuring the capable
                 handling of your system. ASTTBC-certified RFPTs bring expertise
-                and adherence to legal standards.
+                and adherence to legal standards.`}
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2">
@@ -53,12 +53,12 @@ const Certification = () => {
                 How Does Certification Benefit You?
               </Accordion.Header>
               <Accordion.Body>
-                Certification benefits you by ensuring your commercial kitchen
+                {` Certification benefits you by ensuring your commercial kitchen
                 meets legal requirements. Our ASTTBC-certified RFPTs enhance
                 safety, reduce risks, and prevent legal issues. By having
                 certified professionals maintain your kitchen's fire protection
                 systems, you're upholding the highest industry standards. Trust
-                us for a safeguarded and compliant establishment.
+                us for a safeguarded and compliant establishment.`}
                 <br />
                 <br />
                 <p className="fw-bolder">
