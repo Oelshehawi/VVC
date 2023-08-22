@@ -3,20 +3,51 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { Toast } from 'react-bootstrap';
+import { ToastContainer } from 'react-bootstrap';
 import styles from './styles/contact.module.css';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaEnvelope } from 'react-icons/fa';
 
 const Contact = () => {
   const [validated, setValidated] = useState(false);
+  const [show, setShow] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [details, setDetails] = useState('');
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    } else {
+      const params = {
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+        details: details,
+      };
 
+      try {
+        const response = await fetch('/api/sendEmail', {
+          method: 'POST',
+          body: JSON.stringify(params),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          // Email sent successfully
+          setShow(true);
+        } else {
+          // Handle error
+        }
+      } catch (error) {
+        // Handle error
+      }
+    }
     setValidated(true);
   };
 
@@ -57,7 +88,12 @@ const Contact = () => {
             </Container>
           </Col>
           <Col md={8} className="fw-medium">
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form
+              id="clientForm"
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+            >
               <FloatingLabel
                 controlId="floatingName"
                 label="Name"
@@ -66,8 +102,10 @@ const Contact = () => {
                 <Form.Control
                   required
                   type="text"
+                  value={name}
                   placeholder="Your Name"
                   className={`rounded-4`}
+                  onChange={(e) => setName(e.target.value)}
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide a Name.
@@ -83,9 +121,10 @@ const Contact = () => {
                   type="email"
                   placeholder="name@example.com"
                   className={`rounded-4`}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please provide an Email.
+                  Please provide a Valid Email.
                 </Form.Control.Feedback>
               </FloatingLabel>
               <FloatingLabel
@@ -97,6 +136,7 @@ const Contact = () => {
                   type="text"
                   placeholder="****-***-***"
                   className={`rounded-4`}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <Form.Control.Feedback type="invalid">
                   Please provide an Email.
@@ -108,6 +148,7 @@ const Contact = () => {
                   type="textarea"
                   placeholder="Details"
                   className={`rounded-4 ${styles.textArea}`}
+                  onChange={(e) => setDetails(e.target.value)}
                 />
               </FloatingLabel>
               <Button
@@ -121,6 +162,16 @@ const Contact = () => {
           </Col>
         </Row>
       </Row>
+      <ToastContainer className="p-3 position-fixed" position="bottom-end">
+        <Toast bg="success" onClose={() => setShow(false)} show={show} autohide>
+          <Toast.Header className="d-flex justify-content-end text-dark fw-bolder">
+            Message Sucessfully sent.
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            {"We'll get back to you ASAP!"}
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
     </Container>
   );
 };
