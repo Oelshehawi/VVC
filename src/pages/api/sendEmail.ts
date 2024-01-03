@@ -10,7 +10,6 @@ export default async function sendEmail(
   if (req.method === 'POST') {
     const body = await req.body;
 
-    // Message format
     const message = `
       Name: ${body?.name}\r\n
       Phone Number: ${body?.phoneNumber}\r\n
@@ -20,7 +19,8 @@ export default async function sendEmail(
 
     const data = {
       to: 'adam@vancouverventcleaning.ca',
-      from: 'adam@vancouverventcleaning.ca',
+      from: 'no-reply@vancouverhooddoctors.com',
+      replyTo: body?.email,
       subject: 'A New Quote Request Has Arrived!',
       text: message,
       html: message.replace(/\r\n/g, '<br>'),
