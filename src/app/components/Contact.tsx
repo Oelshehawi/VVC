@@ -1,67 +1,71 @@
 'use client';
-import React, { useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
-import { Toast } from 'react-bootstrap';
-import { ToastContainer } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import styles from './styles/contact.module.css';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { FaEnvelope } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import { useState } from 'react';
+import { sendEmail } from '@/data/actions';
+import toast, { Toaster } from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
-  const [validated, setValidated] = useState(false);
-  const [show, setShow] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [details, setDetails] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
 
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-    } else {
-      const params = {
-        name: name,
-        email: email,
-        phoneNumber: phoneNumber,
-        details: details,
-      };
-
-      try {
-        const response = await fetch('/api/sendEmail', {
-          method: 'POST',
-          body: JSON.stringify(params),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        if (response.ok) {
-          // Email sent successfully
-          setShow(true);
-        } else {
-          // Handle error
-        }
-      } catch (error) {
-        // Handle error
+  const validateForm = (formData: FormData) => {
+    const newErrors: { [key: string]: boolean } = {};
+    const fields = ['name', 'email', 'number', 'details'];
+    
+    fields.forEach(field => {
+      if (!formData.get(field)) {
+        newErrors[field] = true;
       }
+    });
+
+    // Basic email validation
+    const email = formData.get('email') as string;
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = true;
     }
-    setValidated(true);
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (formData: FormData) => {
+    if (isSubmitting) return;
+    
+    if (!validateForm(formData)) {
+      toast.error('Please fill in all required fields correctly');
+      return;
+    }
+
+    setIsSubmitting(true);
+    const result = await sendEmail(formData);
+
+    if (result.message.includes('sent')) {
+      toast.success(result.message);
+      (document.getElementById('contact-form') as HTMLFormElement).reset();
+    } else {
+      toast.error(result.message);
+    }
+
+    setIsSubmitting(false);
+  };
+
+  const shakeAnimation = {
+    x: [0, -10, 10, -10, 10, 0],
+    transition: { duration: 0.4 }
   };
 
   return (
-    <Container id="contact" className="text-center">
-      <div className={`mt-md-0 mt-5 ${styles.sectionTitle}`}>
-        <h6 className={` mb-3 ${styles.line}`}>Contact Us</h6>
-      </div>
+    <Container id="contact" className="mt-5 mb-5">
+      <Toaster />
       <Row>
         <Col
           md={12}
-          className=" d-flex justify-content-center align-items-center flex-column p-4"
+          className="d-flex justify-content-center align-items-center flex-column p-4"
         >
-          <h1> Get a Free Quote Today</h1>
+          <h1>Get a Free Quote Today</h1>
           <p className="my-3 text-secondary fw-bolder">
             Zero-Risk Choice: Free Estimate, Competitive Pricing, Decide with
             Confidence
@@ -71,7 +75,7 @@ const Contact = () => {
           <Col md={4} className={`${styles.contactInfo}`}>
             <Container className={`pb-2 pt-2 mb-5 ${styles.contactInfoItem}`}>
               <div className={`mt-4 ${styles.icon}`}>
-                <FaPhoneAlt size={20} className={` ${styles.iconColor}`} />
+                <FaPhoneAlt size={20} className={styles.iconColor} />
               </div>
               <h3 className="mt-4 ms-5 ps-4 text-start">Call Us</h3>
               <p className="ms-5 ps-4 text-start">604-273-8717</p>
@@ -79,7 +83,7 @@ const Contact = () => {
 
             <Container className={`pb-5 pt-2 mb-5 ${styles.contactInfoItem}`}>
               <div className={`mt-4 ${styles.icon}`}>
-                <FaEnvelope size={20} className={` ${styles.iconColor}`} />
+                <FaEnvelope size={20} className={styles.iconColor} />
               </div>
               <h3 className="mt-4 ms-5 ps-4 text-start">Email Us</h3>
               <p className="ms-5 ps-4 text-start text-break">
@@ -87,91 +91,77 @@ const Contact = () => {
               </p>
             </Container>
           </Col>
-          <Col md={8} className="fw-medium">
+          <Col md={8}>
             <Form
-              id="clientForm"
-              noValidate
-              validated={validated}
-              onSubmit={handleSubmit}
+              id="contact-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target as HTMLFormElement);
+                handleSubmit(formData);
+              }}
             >
-              <FloatingLabel
-                controlId="floatingName"
-                label="Name"
-                className="mb-3"
-              >
-                <Form.Control
-                  required
-                  type="text"
-                  value={name}
-                  placeholder="Your Name"
-                  className={`rounded-4`}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a Name.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Email address"
-                className="mb-3"
-              >
-                <Form.Control
-                  required
-                  type="email"
-                  placeholder="name@example.com"
-                  className={`rounded-4`}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a Valid Email.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-              <FloatingLabel
-                controlId="floatingInputPhone"
-                label="Phone Number"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="****-***-***"
-                  className={`rounded-4`}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please provide an Email.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-              <FloatingLabel controlId="floatingTextArea" label="Details">
-                <Form.Control
-                  as="textarea"
-                  type="textarea"
-                  placeholder="Details"
-                  className={`rounded-4 ${styles.textArea}`}
-                  onChange={(e) => setDetails(e.target.value)}
-                />
-              </FloatingLabel>
-              <Button
-                size="lg"
-                type="submit"
-                className={`my-4 ${styles.primaryButton}`}
-              >
-                Get your Quote
-              </Button>
+              <motion.div animate={errors.name ? shakeAnimation : {}}>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    className={`p-3 ${errors.name ? 'border-danger' : ''}`}
+                    onChange={() => setErrors({ ...errors, name: false })}
+                  />
+                </Form.Group>
+              </motion.div>
+
+              <motion.div animate={errors.email ? shakeAnimation : {}}>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    className={`p-3 ${errors.email ? 'border-danger' : ''}`}
+                    onChange={() => setErrors({ ...errors, email: false })}
+                  />
+                </Form.Group>
+              </motion.div>
+
+              <motion.div animate={errors.number ? shakeAnimation : {}}>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="tel"
+                    placeholder="Phone Number"
+                    name="number"
+                    className={`p-3 ${errors.number ? 'border-danger' : ''}`}
+                    onChange={() => setErrors({ ...errors, number: false })}
+                  />
+                </Form.Group>
+              </motion.div>
+
+              <motion.div animate={errors.details ? shakeAnimation : {}}>
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Details"
+                    name="details"
+                    className={`${styles.textArea} ${errors.details ? 'border-danger' : ''}`}
+                    onChange={() => setErrors({ ...errors, details: false })}
+                  />
+                </Form.Group>
+              </motion.div>
+
+              <div className="d-flex justify-content-center">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`p-3 ${styles.primaryButton}`}
+                >
+                  {isSubmitting ? 'Sending...' : 'Get Your Free Quote'}
+                </Button>
+              </div>
             </Form>
           </Col>
         </Row>
       </Row>
-      <ToastContainer className="p-3 position-fixed" position="bottom-end">
-        <Toast bg="success" onClose={() => setShow(false)} show={show} autohide>
-          <Toast.Header className="d-flex justify-content-end text-dark fw-bolder">
-            Message Sucessfully sent.
-          </Toast.Header>
-          <Toast.Body className="text-white">
-            {"We'll get back to you ASAP!"}
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
     </Container>
   );
 };

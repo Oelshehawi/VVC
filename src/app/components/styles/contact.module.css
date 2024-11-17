@@ -63,3 +63,18 @@
   color: var(--main-color);
   border-color: var(--main-color);
 }
+
+.errorButton {
+  background-color: #ef4444 !important;
+  pointer-events: none;
+}
+
+.successButton {
+  background-color: #22c55e !important;
+  pointer-events: none;
+}
+
+.loadingButton {
+  background-color: #94a3b8 !important;
+  pointer-events: none;
+}
