@@ -40,7 +40,7 @@ const NavigationBar = () => {
       <Navbar.Brand href="/" className={` ${styles.brandText}`}>
         <Image
           alt="VHD Logo"
-          src="/9925.png"
+          src="/logo.png"
           width="30"
           height="30"
           className="rounded-3 me-2"
