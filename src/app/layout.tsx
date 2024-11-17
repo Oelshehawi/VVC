@@ -75,6 +75,9 @@ export const metadata: Metadata = {
     },
   },
   category: 'Commercial Kitchen Services',
+  other: {
+    'google-site-verification': 'uBY82mI9pZfD9GfO4QTX78ldjNF2I6aO5pGa7xyDsg8',
+  },
 };
 
 export default function RootLayout({
@@ -121,6 +124,14 @@ export default function RootLayout({
     ],
     url: 'https://vancouverhooddoctors.ca',
     telephone: '604-273-8717',
+    "sameAs": [
+      "https://www.google.com/maps/place/YOUR_GOOGLE_BUSINESS_LINK",
+      // Add other social media profiles if you have them
+    ],
+    "priceRange": "$$", // Add your price range
+    "openingHours": "Mo-Su 00:00-23:59", // Add your actual hours
+    "paymentAccepted": ["credit card", "debit card", "cash"], // Add your payment methods
+    "hasMap": "YOUR_GOOGLE_MAPS_LINK"
   };
 
   return (

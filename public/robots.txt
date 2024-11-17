@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://vancouverhooddoctors.ca/sitemap.xml 
+Sitemap: https://vancouverhooddoctors.ca/sitemap.xml
+
+# Add specific rules for important pages
+Allow: /services
+Allow: /contact
+Allow: /about 
