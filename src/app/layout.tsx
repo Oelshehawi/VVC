@@ -90,8 +90,7 @@ export default function RootLayout({
     '@type': 'LocalBusiness',
     name: 'Vancouver Hood Doctors',
     image: '/logo.png',
-    description:
-      'Professional commercial kitchen exhaust cleaning and certification services in Vancouver. ASTTBC certified technicians ensuring clean and safe commercial kitchens.',
+    description: 'Professional commercial kitchen exhaust cleaning and certification services in Vancouver. ASTTBC certified technicians ensuring clean and safe commercial kitchens.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Vancouver',
@@ -124,14 +123,98 @@ export default function RootLayout({
     ],
     url: 'https://vancouverhooddoctors.ca',
     telephone: '604-273-8717',
-    "sameAs": [
-      "https://www.google.com/maps/place/YOUR_GOOGLE_BUSINESS_LINK",
-      // Add other social media profiles if you have them
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://vancouverhooddoctors.ca'
+    },
+    sameAs: [
+      "https://maps.app.goo.gl/quNmkwsoVvWfYVhz9",
     ],
-    "priceRange": "$$", // Add your price range
-    "openingHours": "Mo-Su 00:00-23:59", // Add your actual hours
-    "paymentAccepted": ["credit card", "debit card", "cash"], // Add your payment methods
-    "hasMap": "YOUR_GOOGLE_MAPS_LINK"
+    potentialAction: [
+      {
+        '@type': 'ReadAction',
+        target: [
+          {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://vancouverhooddoctors.ca/#services'
+          }
+        ]
+      },
+      {
+        '@type': 'QuoteAction',
+        target: [
+          {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://vancouverhooddoctors.ca/#contact'
+          }
+        ]
+      }
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Kitchen Exhaust Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Exhaust Hood Cleaning',
+            description: 'Professional commercial kitchen exhaust system cleaning'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'ASTTBC Certification',
+            description: 'Official kitchen exhaust system certification'
+          }
+        }
+      ]
+    }
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://vancouverhooddoctors.ca'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Services',
+        item: 'https://vancouverhooddoctors.ca/#services'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Exhaust Cleaning',
+        item: 'https://vancouverhooddoctors.ca/#exhaust-cleaning'
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: 'Certification',
+        item: 'https://vancouverhooddoctors.ca/#certification'
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        name: 'Our Clients',
+        item: 'https://vancouverhooddoctors.ca/#clients'
+      },
+      {
+        '@type': 'ListItem',
+        position: 6,
+        name: 'Contact',
+        item: 'https://vancouverhooddoctors.ca/#contact'
+      }
+    ]
   };
 
   return (
@@ -140,6 +223,10 @@ export default function RootLayout({
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       </head>
       <body>

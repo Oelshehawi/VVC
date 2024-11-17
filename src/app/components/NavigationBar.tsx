@@ -1,11 +1,14 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './styles/navigation.module.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const NavigationBar = () => {
+  const pathname = usePathname();
+
   useEffect(() => {
     const handleScroll = () => {
       const navBar = document.querySelector('.navbar');
@@ -18,7 +21,6 @@ const NavigationBar = () => {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -37,34 +39,33 @@ const NavigationBar = () => {
 
   return (
     <Navbar fixed="top" expand="lg" className={`px-2 px-md-4 ${styles.navbar}`}>
-      <Navbar.Brand href="/" className={` ${styles.brandText}`}>
+      <Navbar.Brand href="/" className={` ${styles.brandText}`} aria-label="Home">
         <Image
-          alt="VHD Logo"
+          alt="Vancouver Hood Doctors Logo"
           src="/logo.png"
           width="30"
           height="30"
           className="rounded-3 me-2"
         />
-        <span className="d-none d-md-inline-block">
-          Vancouver Vent Cleaning
-        </span>
+        <span className="d-none d-md-inline-block">Vancouver Hood Doctors</span>
         <span className={`d-inline-block d-sm-none fw-bolder ${styles.font}`}>
-          Vancouver Vent Cleaning
+          Vancouver Hood Doctors
         </span>
       </Navbar.Brand>
       <Navbar.Toggle
-        aria-controls="responsive-navbar-nav"
+        aria-controls="primary-navigation"
         className={styles.brandText}
       />
       <Navbar.Collapse
-        id="responsive-navbar-nav"
+        id="primary-navigation"
         className="justify-content-end"
       >
-        <Nav className="d-flex justify-content-end" as="ul">
+        <Nav className="d-flex justify-content-end" as="ul" role="navigation" aria-label="Main">
           <Nav.Item as="li">
             <Nav.Link
               onClick={() => scrollToSection('home')}
               className={`me-4 ${styles.navText}`}
+              aria-current={pathname === '/' ? 'page' : undefined}
             >
               Home
             </Nav.Link>
@@ -73,6 +74,7 @@ const NavigationBar = () => {
             <Nav.Link
               onClick={() => scrollToSection('services')}
               className={` me-4 ${styles.navText}`}
+              aria-current={pathname === '#services' ? 'page' : undefined}
             >
               Services
             </Nav.Link>
@@ -81,6 +83,7 @@ const NavigationBar = () => {
             <Nav.Link
               onClick={() => scrollToSection('exhaust-cleaning')}
               className={`me-4 ${styles.navText}`}
+              aria-current={pathname === '#exhaust-cleaning' ? 'page' : undefined}
             >
               Exhaust System Cleaning
             </Nav.Link>
@@ -89,6 +92,7 @@ const NavigationBar = () => {
             <Nav.Link
               onClick={() => scrollToSection('certification')}
               className={`me-4 ${styles.navText}`}
+              aria-current={pathname === '#certification' ? 'page' : undefined}
             >
               Certification
             </Nav.Link>
@@ -97,6 +101,7 @@ const NavigationBar = () => {
             <Nav.Link
               className={`me-4 ${styles.navText}`}
               onClick={() => scrollToSection('clients')}
+              aria-current={pathname === '#clients' ? 'page' : undefined}
             >
               Our Clients
             </Nav.Link>
@@ -105,6 +110,7 @@ const NavigationBar = () => {
             <Nav.Link
               onClick={() => scrollToSection('contact')}
               className={`me-4 ${styles.navText}`}
+              aria-current={pathname === '#contact' ? 'page' : undefined}
             >
               Contact Us
             </Nav.Link>
