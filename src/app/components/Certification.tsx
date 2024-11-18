@@ -105,10 +105,9 @@ const Certification: React.FunctionComponent<scrollProps> = ({
             </Accordion>
           </motion.div>
         </Col>
-        <Row className={`d-flex justify-content-center px-0`}>
-          <motion.div {...fadeInAnimation} className=''>
-            <Button
-              size='lg'
+        <motion.div {...fadeInAnimation} className=''>
+          <Button
+            size='lg'
               type='submit'
               className={`mt-4 ${styles.primaryButton}`}
               onClick={() => scrollToSection('contact')}
@@ -116,7 +115,6 @@ const Certification: React.FunctionComponent<scrollProps> = ({
               Get Your Kitchen Certified
             </Button>
           </motion.div>
-        </Row>
       </Row>
     </Container>
   );

@@ -29,7 +29,7 @@ const ExhaustCleaning: React.FunctionComponent<scrollProps> = ({
             d="M0,64L48,90.7C96,117,192,171,288,170.7C384,171,480,117,576,122.7C672,128,768,192,864,186.7C960,181,1056,107,1152,69.3C1248,32,1344,32,1392,32L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
           ></path>
         </svg>
-        <Container className={`mt-5 text-center min-vh-100`}>
+        <Container className={`mt-5 text-center min-vh-50`}>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
