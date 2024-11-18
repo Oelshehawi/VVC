@@ -5,6 +5,8 @@ import styles from './styles/exhaustCleaning.module.css';
 import NextImage from 'next/image';
 import { FaAngleRight } from 'react-icons/fa';
 import { ReactCompareSlider } from 'react-compare-slider';
+import { motion } from 'framer-motion';
+import { isMobile } from '../utils/isMobile';
 
 interface scrollProps {
   scrollToSection: (id: string) => void;
@@ -27,99 +29,91 @@ const ExhaustCleaning: React.FunctionComponent<scrollProps> = ({
             d="M0,64L48,90.7C96,117,192,171,288,170.7C384,171,480,117,576,122.7C672,128,768,192,864,186.7C960,181,1056,107,1152,69.3C1248,32,1344,32,1392,32L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
           ></path>
         </svg>
-        <Container className={`mt-5 text-center`}>
-          <div className={` ${styles.sectionTitle}`}>
-            <h6 className={` mb-3 ${styles.line} text-white`}>
-              Exhaust System Cleaning
-            </h6>
-          </div>
+        <Container className={`mt-5 text-center min-vh-100`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className={` ${styles.sectionTitle}`}>
+              <h6 className={` mb-3 ${styles.line} text-white`}>
+                Exhaust System Cleaning
+              </h6>
+            </div>
+          </motion.div>
           <Row className="my-4 py-4 text-start">
             <Col md={6} className="d-flex align-items-center">
-              <h1> Ensuring Clean and Safe Commercial Kitchens</h1>
+              <motion.h1
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                Ensuring Clean and Safe Commercial Kitchens
+              </motion.h1>
             </Col>
             <Col md={6}>
-              <p>
-                We understand the importance of kitchen exhaust cleaning and
-                certificaiton for commercial kitchens. Our certified technicians
-                are trained to thoroughly clean and inspect kitchen exhaust
-                systems, ensuring that they are free from grease buildup and
-                potential fire hazards.
-              </p>
-              <Button
-                variant="outline-light"
-                className={`${styles.primaryButton}`}
-                onClick={() => scrollToSection('contact')}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
-                Free Quote
-                <FaAngleRight className={`${styles.arrowIcon}`}></FaAngleRight>
-              </Button>
+                <p>
+                  We understand the importance of kitchen exhaust cleaning and
+                  certificaiton for commercial kitchens. Our certified technicians
+                  are trained to thoroughly clean and inspect kitchen exhaust
+                  systems, ensuring that they are free from grease buildup and
+                  potential fire hazards.
+                </p>
+                <Button
+                  variant="outline-light"
+                  className={`${styles.primaryButton}`}
+                  onClick={() => scrollToSection('contact')}
+                >
+                  Free Quote
+                  <FaAngleRight className={`${styles.arrowIcon}`} />
+                </Button>
+              </motion.div>
             </Col>
           </Row>
           <h5 className="mb-5 text-center"> Let Our Work Speak for Itself:</h5>
           <Row>
-            <Col md={4}>
-              <ReactCompareSlider
-                boundsPadding={30}
-                itemOne={
-                  <NextImage
-                    alt="Before Fan"
-                    src="/fanBefore.jpg"
-                    fill={true}
-                    className={`rounded-5 ${styles.image}`}
+            {[
+              { before: '/fanBefore.jpg', after: '/fanAfter.jpg' },
+              { before: '/hoodBefore.jpg', after: '/hoodAfter.jpg' },
+              { before: '/ductBefore.jpg', after: '/ductAfter.jpg' }
+            ].map((item, index) => (
+              <Col md={4} key={index} className={index > 0 ? "mt-5 mt-md-0" : ""}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <ReactCompareSlider
+                    boundsPadding={30}
+                    itemOne={
+                      <NextImage
+                        alt={`Before ${index + 1}`}
+                        src={item.before}
+                        fill={true}
+                        className={`rounded-5 ${styles.image}`}
+                      />
+                    }
+                    itemTwo={
+                      <NextImage
+                        alt={`After ${index + 1}`}
+                        src={item.after}
+                        fill={true}
+                        className={`rounded-5 ${styles.image}`}
+                      />
+                    }
                   />
-                }
-                itemTwo={
-                  <NextImage
-                    alt="After FAN"
-                    src="/fanAfter.jpg"
-                    fill={true}
-                    className={`rounded-5 ${styles.image}`}
-                  />
-                }
-              />
-            </Col>
-            <Col md={4} className="mt-5 mt-md-0">
-              <ReactCompareSlider
-                boundsPadding={30}
-                itemOne={
-                  <NextImage
-                    alt="Before Hood"
-                    src="/hoodBefore.jpg"
-                    fill={true}
-                    className={`rounded-5 ${styles.image}`}
-                  />
-                }
-                itemTwo={
-                  <NextImage
-                    alt="After Hood"
-                    src="/hoodAfter.jpg"
-                    fill={true}
-                    className={`rounded-5 ${styles.image}`}
-                  />
-                }
-              />
-            </Col>
-            <Col md={4} className="mt-5 mt-md-0">
-              <ReactCompareSlider
-                boundsPadding={30}
-                itemOne={
-                  <NextImage
-                    alt="Before Duct"
-                    src="/ductBefore.jpg"
-                    fill={true}
-                    className={`rounded-5 ${styles.image}`}
-                  />
-                }
-                itemTwo={
-                  <NextImage
-                    alt="After Duct"
-                    src="/ductAfter.jpg"
-                    fill={true}
-                    className={`rounded-5 ${styles.image}`}
-                  />
-                }
-              />
-            </Col>
+                </motion.div>
+              </Col>
+            ))}
           </Row>
         </Container>
         <svg

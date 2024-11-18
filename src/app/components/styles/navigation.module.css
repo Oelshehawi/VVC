@@ -1,49 +1,95 @@
+.navbar {
+  position: fixed;
+  right: 0;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+}
+
 .navbar::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   height: 100%;
   width: 100%;
-  background-color: var(--bg-color);
+  background-color: var(--body-bg-color);
   box-shadow: var(--shadow);
   z-index: -1;
   transform: translateY(calc(-100% - 10px));
   transition: transform 0.5s ease;
 }
 
-.navbar {
-  position: fixed;
-  left: 0;
-  width: 100%;
-  top: 0;
-  z-index: 2;
-  padding: 10px 0;
-  background-color: var(--body-bg-color) !important;
-}
-
-.navbar.bg-reveal::before {
+.bg-reveal::before {
   transform: translateY(0) !important;
 }
 
-.navText {
+.brand {
   color: var(--text-dark-grey) !important;
-  font-size: large !important;
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.brandText {
-  color: var(--text-dark-grey) !important;
-  font-weight: bolder;
-}
-
-.navText:hover {
+.bg-reveal .brand {
   color: var(--main-color) !important;
 }
 
-.navText:focus-within {
-  color: var(--main-color) !important;
+.navLink {
+  color: var(--text-dark-grey) !important;
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.font {
-  font-size: 0.8rem;
+.bg-reveal .navLink {
+  color: var(--text-dark-grey) !important;
+}
+
+.navLink:hover {
+  color: var(--main-color) !important;
+  transform: translateY(-2px);
+}
+
+.contactLink {
+  background: var(--main-color);
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 25px;
+  margin-right: 2rem;
+  color: white !important;
+}
+
+.contactLink:hover {
+  background: var(--body-bg-color);
+  color: var(--main-color) !important;
+  border: 1px solid var(--main-color);
+}
+
+.bg-reveal .contactLink {
+  color: white !important;
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    background-color: var(--body-bg-color) !important;
+    padding: 10px 0;
+  }
+
+  .brand {
+    color: var(--main-color) !important;
+  }
+
+  .navLink {
+    color: var(--text-dark-grey) !important;
+    margin: 10px 0;
+  }
+
+  .contactLink {
+    margin: 10px 0;
+    text-align: center;
+  }
 }

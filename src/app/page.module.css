@@ -29,8 +29,8 @@
 
 .circle {
   position: absolute;
-  z-index: -1;
   background-color: var(--main-color);
+  z-index: -1;
   height: 500px;
   width: 500px;
   border-radius: 50%;
@@ -38,6 +38,7 @@
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
   animation: pulse 2s infinite;
 }
+
 
 .bubble {
   opacity: 1;

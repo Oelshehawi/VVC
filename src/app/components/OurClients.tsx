@@ -1,10 +1,20 @@
 'use client';
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import styles from './styles/clients.module.css';
 import NextImage from 'next/image';
+import { motion } from 'framer-motion';
 
 const OurClients = () => {
+  const clients = [
+    { src: '/dairyQueen.png', alt: 'Dairy Queen' },
+    { src: '/bostonPizza.png', alt: 'Boston Pizza' },
+    { src: '/oebBreakfast.png', alt: 'OEB Breakfast' },
+    { src: '/panago.png', alt: 'Panago' },
+    { src: '/chitChat.png', alt: 'Chit Chat' },
+    { src: '/attira.png', alt: 'Attira' }
+  ];
+
   return (
     <Container id="clients" fluid className={`px-0 ${styles.secondarySection}`}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
@@ -15,69 +25,53 @@ const OurClients = () => {
         ></path>
       </svg>
       <Container className="mt-4 text-center">
-        <div className={` ${styles.sectionTitle}`}>
-          <h6 className={` mb-3 text-white ${styles.line}`}>Our Clients</h6>
-        </div>
-        <Row className="mt-4 pt-4 text-start">
-          <Col md={12}>
-            <h1> A Few Of Our Clients : </h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="d-flex align-items-center" md={2}>
-            <NextImage
-              alt="Dairy Queen"
-              src="/dairyQueen.png"
-              fill={true}
-              className={styles.image}
-            />
-          </Col>
-          <Col md={2}>
-            <NextImage
-              alt="Clean Kitchen"
-              src="/bostonPizza.png"
-              fill={true}
-              className={styles.image}
-            />
-          </Col>
-          <Col className="d-flex align-items-center" md={2}>
-            <NextImage
-              alt="Clean Kitchen"
-              src="/oebBreakfast.png"
-              fill={true}
-              className={styles.image}
-            />
-          </Col>
-          <Col className="d-flex align-items-center" md={2}>
-            <NextImage
-              alt="Clean Kitchen"
-              src="/panago.png"
-              fill={true}
-              className={styles.image}
-            />
-          </Col>
-          <Col className="d-flex align-items-center" md={2}>
-            <NextImage
-              alt="Clean Kitchen"
-              src="/chitChat.png"
-              fill={true}
-              className={styles.image}
-            />
-          </Col>
-          <Col className="d-flex align-items-center" md={2}>
-            <NextImage
-              alt="Clean Kitchen"
-              src="/attira.png"
-              fill={true}
-              className={styles.image}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="d-flex justify-content-end pt-4">
-            <h3>... and Hundreds More!</h3>
-          </Col>
-        </Row>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className={` ${styles.sectionTitle}`}>
+            <h6 className={` mb-3 text-white ${styles.line}`}>Our Clients</h6>
+          </div>
+          <Row className="mt-4 pt-4 text-start">
+            <Col md={12}>
+              <h1> A Few Of Our Clients : </h1>
+            </Col>
+          </Row>
+          <Row>
+            {clients.map((client, index) => (
+              <Col key={index} className="d-flex align-items-center" md={2}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="w-100"
+                >
+                  <NextImage
+                    alt={client.alt}
+                    src={client.src}
+                    fill={true}
+                    className={styles.image}
+                  />
+                </motion.div>
+              </Col>
+            ))}
+          </Row>
+          <Row>
+            <Col md={12} className="d-flex justify-content-end pt-4">
+              <motion.h3
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                ... and Hundreds More!
+              </motion.h3>
+            </Col>
+          </Row>
+        </motion.div>
       </Container>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
         <path
