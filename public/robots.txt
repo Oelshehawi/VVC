@@ -1,8 +1,27 @@
 User-agent: *
 Allow: /
-Sitemap: https://vancouverhooddoctors.ca/sitemap.xml
+Allow: /sitemap.xml
 
-# Add specific rules for important pages
-Allow: /services
-Allow: /contact
-Allow: /about 
+# Sitemaps
+Sitemap: https://vancouverhooddoctors.ca/sitemap.xml
+Sitemap: https://vancouverhooddoctors.com/sitemap.xml
+
+# Common files to disallow
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*?
+Disallow: /*?*
+Disallow: /404
+
+# Media crawling optimization
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.png$
+Allow: /*.webp$
+
+# Prevent archive.org from archiving the site (optional, remove if you want archiving)
+# User-agent: ia_archiver
+# Disallow: /
